@@ -9,7 +9,7 @@ use App\Core\AControllerBase;
  * Example of simple controller
  * @package App\Controllers
  */
-class HomeController extends AControllerBase
+class HomeController extends AControllerRedirect
 {
 
     public function index()
@@ -20,7 +20,19 @@ class HomeController extends AControllerBase
             ]);
     }
 
-    public function contact()
+    public function about()
+    {
+        return $this->html(
+            []
+        );
+    }
+    public function games()
+    {
+        return $this->html(
+            []
+        );
+    }
+    public function login()
     {
         return $this->html(
             []

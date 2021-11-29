@@ -1,0 +1,90 @@
+
+.navbar {
+    background-color: #212529 !important;
+
+}
+
+.nav-link:hover {
+    color: #0d6efd !important;
+}
+
+.modal-header {
+    border-bottom: 0;
+    padding: 0;
+}
+
+.divider {
+    margin: 3rem;
+}
+
+body {
+    background-color: black !important;
+
+}
+
+.row p {
+    color: white;
+}
+
+.dropdown-menu.show {
+    background-color: black !important;
+
+}
+
+.dropdown-item {
+    color: white !important;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+    background-color: #0d6efd !important;
+}
+
+.navbar-brand {
+    width: 1.8rem;
+}
+
+#contentGames h2 {
+    color: #08fdd8 !important;
+}
+#contentGames h2:hover {
+    color: #ff0b56 !important;
+}
+
+#contentGames div a:hover {
+    background-color: #08fdd8 !important;
+}
+
+#contentGames div a {
+    background-color: #ff0b56 !important;
+    border: 0;
+
+}
+.fa:hover {
+    color: #08fdd8!important;
+}
+#aboutContent h2{
+    color: #08fdd8!important;
+}
+#aboutContent h2 span{
+    color: #ff0b56!important;
+}
+.gameImg img:hover{
+    box-shadow: 4px 5px 5px 1px #08fdd8;
+    transform: scale(1.01)
+
+}
+.content{
+    min-height: 100vh;
+}
+.form-label{
+    color: #08fdd8!important;
+
+}
+.login{
+    background-color: #ff0b56 !important;
+    border-color: #ff0b56;
+}
+.login:hover{
+
+    border-color: #08fdd8;
+}
