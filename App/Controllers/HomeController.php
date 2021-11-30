@@ -15,9 +15,7 @@ class HomeController extends AControllerRedirect
     public function index()
     {
         return $this->html(
-            [
-                'meno' => 'študent'
-            ]);
+            []);
     }
 
     public function about()

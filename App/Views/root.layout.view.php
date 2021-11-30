@@ -65,6 +65,7 @@
                     </ul>
                 </li>
             </ul>
+            <?php if (!\App\Auth::isLogged()) { ?>
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="?c=auth&a=loginForm">Login</a>
@@ -73,7 +74,16 @@
                     <a class="nav-link" href="?c=auth&a=registerForm">Register</a>
                 </li>
             </ul>
-
+            <?php }else{?>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="?c=auth&a=profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="?c=auth&a=logout">Logout</a>
+                </li>
+            <?php } ?>
+            </ul>
         </div>
     </div>
 </nav>
