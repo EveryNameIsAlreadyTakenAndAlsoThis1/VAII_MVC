@@ -90,5 +90,7 @@ body {
 }
 .profile{
     background-color: #212529 !important;
-    margin-top: 2vh;
+    margin-top: 2vh !important;
+    color: #08fdd8!important;
+
 }

@@ -31,7 +31,7 @@
 <!--</nav>-->
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
     <div class="container-fluid">
-        <a href="index.html">
+        <a href="?c=home">
             <img alt="" class="navbar-brand" src="public/images/logoL.png">
         </a>
         <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
