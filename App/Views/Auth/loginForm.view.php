@@ -15,7 +15,7 @@
                     <input  class="form-control" name="login" id="exampleFormControlInput1" required>
                 </div>
                 <div class="mb-3">
-                    <label for="exampleFormControlInput2" class="form-label">Heslo</label>
+                    <label for="exampleFormControlInput2" class="form-label">Password</label>
                     <input type="password" class="form-control" name="password" id="exampleFormControlInput2" required>
                 </div>
                 <div class="mb-3">
