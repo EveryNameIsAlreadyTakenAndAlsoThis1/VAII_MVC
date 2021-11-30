@@ -10,8 +10,10 @@
                         <h5 class="my-3"><?= unserialize($_SESSION['user'])->nickname ?> </h5>
 
                         <div class="d-flex justify-content-center mb-2">
-                            <a href="?c=auth&a=changeNicknameForm" type="button" class="btn btn-primary">Change nickname</a>
-                            <a type="?c=auth&a=changeProfilePicture" class="btn btn-outline-primary ms-1">Change Profile Picture</a>
+                            <a href="?c=auth&a=changeNicknameForm" type="button" class="btn btn-primary">Change
+                                nickname</a>
+                            <a type="?c=auth&a=changeProfilePicture" class="btn btn-outline-primary ms-1">Change Profile
+                                Picture</a>
                         </div>
                     </div>
                 </div>
@@ -63,7 +65,8 @@
                             </div>
 
                             <div class="col-sm-3">
-                                <a href="?c=auth&a=changePasswordForm" class="btn btn-outline-secondary" type="submit" id="button-addon2">Change
+                                <a href="?c=auth&a=changePasswordForm" class="btn btn-outline-secondary" type="submit"
+                                   id="button-addon2">Change
                                 </a>
                             </div>
 
@@ -102,6 +105,17 @@
                                         </button>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="input-group mb-3">
+                                    <a href="?c=auth&a=deleteAccountForm" class="btn btn-outline-secondary"
+                                       type="submit" id="button-addon2">
+                                        Delete Account
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

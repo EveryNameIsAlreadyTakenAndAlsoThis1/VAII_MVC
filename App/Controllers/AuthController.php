@@ -70,6 +70,17 @@ class AuthController extends AControllerRedirect
             ]
         );
     }
+    public function deleteAccountForm()
+    {
+        if (!Auth::isLogged()) {
+            $this->redirect('home');
+        }
+        return $this->html(
+            [
+                'error' => $this->request()->getValue('error')
+            ]
+        );
+    }
 
     public function login()
     {
@@ -111,7 +122,7 @@ class AuthController extends AControllerRedirect
         $passwordRepeat = $this->request()->getValue('passwordRepeat');
 
         $result = Auth::register($login, $password, $email, $passwordRepeat);
-        if (result == 1) {
+        if ($result == 1) {
             $this->redirect('auth', 'registerForm', ['error' => 'Username already exists']);
         } elseif ($result == 2) {
             $this->redirect('auth', 'registerForm', ['error' => 'Email already exists']);
@@ -121,6 +132,18 @@ class AuthController extends AControllerRedirect
             $this->redirect('auth', 'loginForm');
         }
 
+
+    }
+    public function deleteAccount()
+    {
+        $password=$this->request()->getValue('password');
+
+        $result=Auth::deleteAccount($password);
+        if($result==1){
+            $this->redirect('auth', 'deleteAccountForm', ['error' => 'Wrong password']);
+        }else{
+            $this->redirect('home');
+        }
 
     }
 
@@ -182,7 +205,7 @@ class AuthController extends AControllerRedirect
         $newPasswordRepeat = $this->request()->getValue('newPasswordRepeat');
         $result = Auth::changePassword($oldPassword, $newPassword, $newPasswordRepeat);
 
-        if ($result == 0) {
+        if ($result == 3) {
             $this->redirect('auth', 'profile');
         } else {
             if ($result == 1) {

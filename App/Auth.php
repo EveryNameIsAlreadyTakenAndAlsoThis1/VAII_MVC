@@ -9,14 +9,14 @@ class Auth
     const LOGIN = "a@a.sk";
     const PASSWORD = "aaa";
 
-    public static function login($login,$password)
+    public static function login($login, $password)
     {
-        $user=\App\Models\User::getAll('nickname=? AND pssword =?',[$login,$password]);
-        if (count($user)>0){
-            $userOne=$user[0];
-            $_SESSION['user']=serialize($userOne);
+        $user = \App\Models\User::getAll('nickname=? AND pssword =?', [$login, $password]);
+        if (count($user) > 0) {
+            $userOne = $user[0];
+            $_SESSION['user'] = serialize($userOne);
             return true;
-        }else{
+        } else {
 
             return false;
         }
@@ -30,11 +30,11 @@ class Auth
 
     public static function getName()
     {
-        if (Auth::isLogged()){
-            $user=unserialize($_SESSION['user']);
-            $nickname=$user->nickname;
+        if (Auth::isLogged()) {
+            $user = unserialize($_SESSION['user']);
+            $nickname = $user->nickname;
             return $nickname;
-        }else{
+        } else {
 
             return "";
         }
@@ -48,73 +48,76 @@ class Auth
 
     public static function changeFullName($fullName)
     {
-        $user=unserialize($_SESSION['user']);
-        $user->fullName=$fullName;
+        $user = unserialize($_SESSION['user']);
+        $user->fullName = $fullName;
         $user->save();
-        $_SESSION['user']=serialize($user);
+        $_SESSION['user'] = serialize($user);
 
     }
 
     public static function changeMobile($mobile)
     {
-        $user=unserialize($_SESSION['user']);
-        $user->mobile=$mobile;
+        $user = unserialize($_SESSION['user']);
+        $user->mobile = $mobile;
         $user->save();
-        $_SESSION['user']=serialize($user);
+        $_SESSION['user'] = serialize($user);
     }
-    public static function changePassword($oldPassword,$newPassword,$newPasswordRepeat)
-    {
-        $user=unserialize($_SESSION['user']);
-        if($user->pssword==$oldPassword){
 
-            if($newPassword==$newPasswordRepeat){
-                $user->pssword=$newPassword;
+    public static function changePassword($oldPassword, $newPassword, $newPasswordRepeat)
+    {
+        $user = unserialize($_SESSION['user']);
+        if ($user->pssword == $oldPassword) {
+
+            if ($newPassword == $newPasswordRepeat) {
+                $user->pssword = $newPassword;
                 $user->save();
-            }else{
+            } else {
                 return 1;
             }
 
-        }else{
+        } else {
             return 2;
         }
-        $_SESSION['user']=serialize($user);
-        return 0;
+        $_SESSION['user'] = serialize($user);
+        return 3;
     }
+
     public static function changeAdress($adress)
     {
-        $user=unserialize($_SESSION['user']);
-        $user->adress=$adress;
+        $user = unserialize($_SESSION['user']);
+        $user->adress = $adress;
         $user->save();
-        $_SESSION['user']=serialize($user);
+        $_SESSION['user'] = serialize($user);
 
     }
+
     public static function changeEmail($email)
     {
-        $user=unserialize($_SESSION['user']);
+        $user = unserialize($_SESSION['user']);
 
         $usersEmail = \App\Models\User::getAll('email = ? ', [$email]);
-        if(count($usersEmail) > 0){
+        if (count($usersEmail) > 0) {
             return 1;
-        }else {
-            $user->email=$email;
+        } else {
+            $user->email = $email;
             $user->save();
-            $_SESSION['user']=serialize($user);
+            $_SESSION['user'] = serialize($user);
         }
 
 
     }
 
-    public static function register($login,$password,$email,$passwordRepeat)
+    public static function register($login, $password, $email, $passwordRepeat)
     {
-        $users= \App\Models\User::getAll('nickname = ? ',[$login]);
-        if(count($users)>0){
+        $users = \App\Models\User::getAll('nickname = ? ', [$login]);
+        if (count($users) > 0) {
             return 1;
-        }else {
+        } else {
             $usersEmail = \App\Models\User::getAll('email = ? ', [$email]);
             if (count($usersEmail) > 0) {
                 return 2;
             } else if ($password != $passwordRepeat) {
-               return 3;
+                return 3;
             } else {
                 $user = new User();
                 $user->nickname = $login;
@@ -122,28 +125,42 @@ class Auth
                 $user->pssword = $password;
                 $user->save();
 
-                return 0;
+                return 4;
             }
         }
     }
 
     public static function changeNickname($newNickname, $password)
     {
-        $user=unserialize($_SESSION['user']);
-        if($user->pssword==$password){
-            $users= \App\Models\User::getAll('nickname = ? ',[$newNickname]);
-            if(count($users)>0){
+        $user = unserialize($_SESSION['user']);
+        if ($user->pssword == $password) {
+            $users = \App\Models\User::getAll('nickname = ? ', [$newNickname]);
+            if (count($users) > 0) {
                 return 1;
             }
 
-            $user->nickname=$newNickname;
+            $user->nickname = $newNickname;
             $user->save();
-            $_SESSION['user']=serialize($user);
+            $_SESSION['user'] = serialize($user);
 
 
-        }else{
+        } else {
             return 2;
 
+        }
+
+
+    }
+
+    public static function deleteAccount($password)
+    {
+        $user = unserialize($_SESSION['user']);
+        if ($user->pssword == $password) {
+            $user->delete();
+            unset($_SESSION['user']);
+
+        }else{
+            return 1;
         }
 
 
