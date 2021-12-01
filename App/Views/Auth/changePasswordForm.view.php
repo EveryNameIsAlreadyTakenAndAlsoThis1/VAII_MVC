@@ -9,7 +9,7 @@
                     <strong><?= $data["error"] ?></strong>
                 </div>
             <?php }?>
-            <form method="post" action="?c=auth&a=changePassword">
+            <form name="passwordForm" method="post" action="?c=auth&a=changePassword" onsubmit="return validatePassword(document.passwordForm.newPassword)">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Old password</label>
                     <input  class="form-control" name="oldPassword" id="exampleFormControlInput1" required>

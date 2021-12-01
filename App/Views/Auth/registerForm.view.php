@@ -10,7 +10,7 @@
                     <strong><?= $data["error"] ?></strong>
                 </div>
             <?php }?>
-            <form method="post" action="?c=auth&a=register">
+            <form name="formRegister" method="post" onsubmit="return validateForm()" action="?c=auth&a=register">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Username</label>
                     <input type="login" class="form-control" name="login" id="exampleFormControlInput1" required>
@@ -22,14 +22,14 @@
 
                 <div class="mb-3">
                     <label for="exampleFormControlInput2" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="password" id="exampleFormControlInput3" required>
+                    <input type="password" class="form-control" name="password" id="exampleFormControlInput3"  required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput2" class="form-label">Repeat your Password</label>
-                    <input type="passwordRepeat" class="form-control" name="passwordRepeat" id="exampleFormControlInput4" required>
+                    <input type="password" class="form-control" name="passwordRepeat" id="exampleFormControlInput4" required>
                 </div>
                 <div class="mb-3">
-                    <button type="submit" class="btn btn-primary login">Register</button>
+                    <button name="submitButton" type="submit" class="btn btn-primary login"">Register</button>
                 </div>
             </form>
         </div>

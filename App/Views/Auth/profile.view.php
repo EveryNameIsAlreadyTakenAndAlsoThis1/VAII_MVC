@@ -27,7 +27,7 @@
                                 <p>Full Name</p>
                             </div>
                             <div class="col-sm-6">
-                                <form method="post" action="?c=auth&a=changeFullName">
+                                <form name="fullNameForm" method="post" action="?c=auth&a=changeFullName" onsubmit="return validateFullName(document.fullNameForm.fullName)" >
                                     <div class="input-group mb-3">
                                         <input name="fullName" type="text" class="form-control"
                                                value="<?= unserialize($_SESSION['user'])->fullName ?>"
@@ -46,7 +46,7 @@
                                 <p class="mb-0">Email</p>
                             </div>
                             <div class="col-sm-6">
-                                <form method="post" action="?c=auth&a=changeEmail">
+                                <form name="emailForm" method="post" action="?c=auth&a=changeEmail" onsubmit="return validateEmail(document.emailForm.email)" >
                                     <div class="input-group mb-3">
                                         <input name="email" type="text" class="form-control"
                                                value="<?= unserialize($_SESSION['user'])->email ?>"
@@ -77,7 +77,7 @@
                                 <p class="mb-0">Mobile</p>
                             </div>
                             <div class="col-sm-6">
-                                <form method="post" action="?c=auth&a=changeMobile">
+                                <form name="mobileForm" method="post" action="?c=auth&a=changeMobile" onsubmit="return validateMobile(document.mobileForm.mobile)">
                                     <div class="input-group mb-3">
                                         <input name="mobile" type="text" class="form-control"
                                                value="<?= unserialize($_SESSION['user'])->mobile ?>"
@@ -95,7 +95,7 @@
                                 <p class="mb-0">Address</p>
                             </div>
                             <div class="col-sm-6">
-                                <form method="post" action="?c=auth&a=changeAdress">
+                                <form name="adressForm" method="post" action="?c=auth&a=changeAdress" onsubmit="return validateAdress(document.adressForm.adress)">
                                     <div class="input-group mb-3">
                                         <input name="adress" type="text" class="form-control"
                                                value="<?= unserialize($_SESSION['user'])->adress ?>"

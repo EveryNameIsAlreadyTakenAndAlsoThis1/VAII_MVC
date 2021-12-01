@@ -94,3 +94,8 @@ body {
     color: #08fdd8!important;
 
 }
+.invalid{
+    border-color: lightcoral;
+    background:lightcoral;
+
+}

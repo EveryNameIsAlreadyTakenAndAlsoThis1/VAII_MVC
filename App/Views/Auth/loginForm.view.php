@@ -9,7 +9,7 @@
                 <strong><?= $data["error"] ?></strong>
             </div>
             <?php }?>
-            <form method="post" action="?c=auth&a=login">
+            <form name="formLogin" method="post" action="?c=auth&a=login" onsubmit="return validateLogin(document.formLogin)">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Username</label>
                     <input  class="form-control" name="login" id="exampleFormControlInput1" required>

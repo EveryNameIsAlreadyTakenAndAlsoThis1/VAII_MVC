@@ -9,7 +9,7 @@
                     <strong><?= $data["error"] ?></strong>
                 </div>
             <?php }?>
-            <form method="post" action="?c=auth&a=changeNickname">
+            <form name="nicknameForm" method="post" action="?c=auth&a=changeNickname" onsubmit="return validateNickname(document.nicknameForm.newNickname)">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">New nickname</label>
                     <input  class="form-control" name="newNickname" id="exampleFormControlInput1" required>
