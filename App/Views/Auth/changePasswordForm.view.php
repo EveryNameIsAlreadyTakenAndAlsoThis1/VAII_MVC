@@ -12,7 +12,7 @@
             <form name="passwordForm" method="post" action="?c=auth&a=changePassword" onsubmit="return validatePassword(document.passwordForm.newPassword)">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Old password</label>
-                    <input  class="form-control" name="oldPassword" id="exampleFormControlInput1" required>
+                    <input  type="password" class="form-control" name="oldPassword" id="exampleFormControlInput1" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput2" class="form-label">New Password</label>
