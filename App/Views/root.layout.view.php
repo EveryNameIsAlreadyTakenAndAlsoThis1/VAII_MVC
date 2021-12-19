@@ -12,24 +12,6 @@
     <script src="public/Validation.js"></script>
 </head>
 <body>
-<!--<nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-end">-->
-<!--    <div class="container">-->
-<!--        <a class="navbar-brand" href="#">FRI-MVC FW </a>-->
-<!--        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">-->
-<!--            <span class="navbar-toggler-icon"></span>-->
-<!--        </button>-->
-<!--        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">-->
-<!--            <ul class="navbar-nav">-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="?c=home">Domov</a>-->
-<!--                </li>-->
-<!--                <li class="nav-item">-->
-<!--                    <a class="nav-link" href="?c=home&a=contact">Kontakt</a>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</nav>-->
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
     <div class="container-fluid">
         <a href="?c=home">

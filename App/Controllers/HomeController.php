@@ -36,4 +36,12 @@ class HomeController extends AControllerRedirect
             []
         );
     }
+    public function game()
+    {
+        return $this->html(
+            []
+        );
+    }
+
+
 }

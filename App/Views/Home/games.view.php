@@ -41,7 +41,7 @@
             <h2>Game</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vulputate vitae justo in
                 suscipit. </p>
-            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            <p><a class="btn btn-secondary" href="?c=home&a=game">View details »</a></p>
         </div>
         <div class="col-lg-4">
             <form class="gameImg">
@@ -50,7 +50,7 @@
             <h2>Game</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vulputate vitae justo in
                 suscipit. </p>
-            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            <p><a class="btn btn-secondary" href="?c=home&a=game">View details »</a></p>
         </div>
         <div class="col-lg-4">
             <form class="gameImg">
@@ -59,7 +59,7 @@
             <h2>Game</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vulputate vitae justo in
                 suscipit. </p>
-            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            <p><a class="btn btn-secondary" href="?c=home&a=game">View details »</a></p>
         </div>
 
     </div>
@@ -72,7 +72,7 @@
             <h2>Game</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vulputate vitae justo in
                 suscipit. </p>
-            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            <p><a class="btn btn-secondary" href="?c=home&a=game">View details »</a></p>
         </div>
         <div class="col-lg-4">
             <form class="gameImg">
@@ -81,7 +81,7 @@
             <h2>Game</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vulputate vitae justo in
                 suscipit. </p>
-            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            <p><a class="btn btn-secondary" href="?c=home&a=game">View details »</a></p>
         </div>
         <div class="col-lg-4">
             <form class="gameImg">
@@ -90,7 +90,7 @@
             <h2>Game</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vulputate vitae justo in
                 suscipit. </p>
-            <p><a class="btn btn-secondary" href="#">View details »</a></p>
+            <p><a class="btn btn-secondary" href="?c=home&a=game">View details »</a></p>
         </div>
     </div>
 </div>
