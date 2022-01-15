@@ -143,6 +143,22 @@ abstract class Model implements \JsonSerializable
         }
     }
 
+    public function customSave(){
+        self::connect();
+
+            $data = array_fill_keys(self::getDbColumns(), null);
+            foreach ($data as $key => &$item) {
+                $item = $this->$key;
+            }
+                $arrColumns = array_map(fn($item) => (':' . $item), array_keys($data));
+                $columns = implode(',', array_keys($data));
+                $params = implode(',', $arrColumns);
+                $sql = "INSERT INTO " . self::getTableName() . " ($columns) VALUES ($params)";
+                $stmt = self::$connection->prepare($sql);
+                $stmt->execute($data);
+
+    }
+
     /**
      * Deletes current model from DB
      * @throws \Exception If model not exists, throw an exception
@@ -163,6 +179,20 @@ abstract class Model implements \JsonSerializable
         } catch (PDOException $e) {
             throw new \Exception('Query failed: ' . $e->getMessage());
         }
+    }
+    public function customDelete(){
+        self::connect();
+        try {
+            $sql = "DELETE FROM " . self::getTableName() . " WHERE userId=? AND tournamentId=?";
+            $stmt = self::$connection->prepare($sql);
+            $stmt->execute([$this->{'userId'},$this->{'tournamentId'}]);
+            if ($stmt->rowCount() == 0) {
+                throw new \Exception('Model not found!');
+            }
+        } catch (PDOException $e) {
+            throw new \Exception('Query failed: ' . $e->getMessage());
+        }
+
     }
 
     /**

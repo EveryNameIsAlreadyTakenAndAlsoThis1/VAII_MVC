@@ -98,3 +98,50 @@ function validateLogin(pLoginForm){
         return true;
     }
 }
+
+$(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
+});
+
+
+$(document).ready(function(){
+    $('.join').click(function(){
+        let d=$(this).val();
+        $.ajax({
+            type:"POST",
+            url:"?c=home&a=joinTournament",
+            data:{tournamentId:d},
+            success:function (response){
+                $("#numberOfPlayers"+d).text(response);
+                console.log(response);
+            },
+            error:function (){
+                alert("err");
+            }
+        });
+    });
+});
+
+$(document).ready(function(){
+    $('.leave').click(function(){
+        let d=$(this).val();
+        $.ajax({
+            type:"POST",
+            url:"?c=home&a=leaveTournament",
+            data:{tournamentId:d},
+            success:function (response){
+                $("#numberOfPlayers"+d).text(response);
+                console.log(response);
+            },
+            error:function (){
+                alert("err");
+            }
+        });
+    });
+});
+
