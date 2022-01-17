@@ -1,6 +1,20 @@
 <?php /** @var Array $data */ ?>
+
 <section>
+
     <div class="container py-5">
+        <?php if($data['error'] != ""){ ?>
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong><?= $data["error"] ?></strong>
+            </div>
+        <?php }?>
+        <?php if($data['success'] != ""){ ?>
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong><?= $data["success"] ?></strong>
+            </div>
+        <?php }?>
         <div class="row">
             <div class="col-lg-4">
                 <div class="card mb-4 profile">
@@ -12,8 +26,8 @@
                         <div class="d-flex justify-content-center mb-2">
                             <a href="?c=auth&a=changeNicknameForm" type="button" class="btn btn-primary">Change
                                 nickname</a>
-                            <a type="?c=auth&a=changeProfilePicture" class="btn btn-outline-primary ms-1">Change Profile
-                                Picture</a>
+<!--                            <a type="?c=auth&a=changeProfilePicture" class="btn btn-outline-primary ms-1">Change Profile-->
+<!--                                Picture</a>-->
                         </div>
                     </div>
                 </div>
@@ -122,6 +136,38 @@
                 </div>
 
             </div>
+            <table class="table table-dark table-striped">
+                <thead>
+                <tr>
+                    <th>id</th>
+                    <th>Name of the tournament</th>
+                    <th>Game</th>
+                    <th>Number of players</th>
+                    <?php if(\App\Auth::isLogged()){
+                        ?><th>Leave</th>
+                    <?php }?>
+
+                </tr>
+                </thead>
+                <tbody id="myTable">
+                <?php
+                $user=unserialize($_SESSION['user']);
+                $tournamentss = \App\Models\Tournament_user::getAll("userId=?",[$user->id]);
+                for ($x = 0; $x < sizeof($tournamentss); $x++){
+                    $tournament=\App\Models\Tournament::getOne($tournamentss[$x]->tournamentId);
+                    ?>
+                    <tr id=<?="trId".$tournament->id?> >
+                        <td><?= $tournament->id?></td>
+                        <td><a href=<?= "?c=home&a=tournament&q=".$tournament->id?>><?= $tournament->name?></a></td>
+                        <td><?= $tournament->game?></td>
+                        <td id=<?="numberOfPlayers".$tournament->id?>><?= sizeof($t=\App\Models\Tournament_user::getAll("tournamentId=?",[$tournament->id])) ?></td>
+                        <?php if(\App\Auth::isLogged()){
+                            ?><td><button value=<?= $tournament->id?> type="button" class="btn btn-outline-danger leaveProfile" >leave</button></td>
+                        <?php } ?>
+                    </tr>
+                <?php }?>
+                </tbody>
+            </table>
         </div>
     </div>
 </section>

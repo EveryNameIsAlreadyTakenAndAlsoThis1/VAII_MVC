@@ -102,3 +102,19 @@ body {
 #Game h3{
     color: #08fdd8!important;
 }
+#Game a{
+    text-decoration: none;
+    color: ghostwhite;
+}
+#Game a:hover{
+    text-decoration: none;
+    color: #08fdd8!important;
+}
+#myTable a{
+    text-decoration: none;
+    color: ghostwhite;
+}
+#myTable a:hover{
+    text-decoration: none;
+    color: #08fdd8!important;
+}

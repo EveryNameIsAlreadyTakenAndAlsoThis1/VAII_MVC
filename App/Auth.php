@@ -16,8 +16,8 @@ class Auth
             return 2;
         }
 
-        $user = \App\Models\User::getAll('nickname=? AND pssword =?', [$login, $password]);
-        if (count($user) > 0) {
+        $user = \App\Models\User::getAll('nickname=?', [$login]);
+        if (count($user) > 0 && password_verify($password,$user[0]->pssword)) {
             $userOne = $user[0];
             $_SESSION['user'] = serialize($userOne);
             return 3;
@@ -70,10 +70,12 @@ class Auth
             return 4;
         }
         $user = unserialize($_SESSION['user']);
-        if ($user->pssword == $oldPassword) {
+
+        if (password_verify($oldPassword,$user->pssword)) {
 
             if ($newPassword == $newPasswordRepeat) {
-                $user->pssword = $newPassword;
+                $password=password_hash($newPassword,PASSWORD_DEFAULT);
+                $user->pssword = $password;
                 $user->save();
             } else {
                 return 1;
@@ -141,7 +143,7 @@ class Auth
                 $user = new User();
                 $user->nickname = $login;
                 $user->email = $email;
-                $user->pssword = $password;
+                $user->pssword = password_hash($password,PASSWORD_DEFAULT);
                 $user->save();
 
                 return 4;
@@ -156,7 +158,7 @@ class Auth
         }
 
         $user = unserialize($_SESSION['user']);
-        if ($user->pssword == $password) {
+        if (password_verify($password,$user->pssword)) {
             $users = \App\Models\User::getAll('nickname = ? ', [$newNickname]);
             if (count($users) > 0) {
                 return 1;
@@ -181,7 +183,11 @@ class Auth
             return 2;
         }
         $user = unserialize($_SESSION['user']);
-        if ($user->pssword == $password) {
+        if (password_verify($password,$user->pssword)) {
+            $tournaments=\App\Models\Tournament_user::getAll("userId=?",[$user->id]);
+            foreach ($tournaments as $t){
+                $t->customDelete();
+            }
             $user->delete();
             unset($_SESSION['user']);
 
@@ -190,5 +196,16 @@ class Auth
         }
 
 
+    }
+
+    public static function isAdmin(){
+        if(self::isLogged()){
+            $user = unserialize($_SESSION['user']);
+            if ($user->role==1){
+                return true;
+            }
+        }
+
+        return false;
     }
 }

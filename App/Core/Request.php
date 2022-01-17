@@ -83,9 +83,9 @@ class Request
     public function getValue($key)
     {
         if (isset($_POST[$key])) {
-            return $_POST[$key];
+            return strip_tags(trim($_POST[$key]));
         } else if (isset($_GET[$key])){
-            return $_GET[$key];
+            return strip_tags(trim($_GET[$key]));
         } else {
             return null;
         }

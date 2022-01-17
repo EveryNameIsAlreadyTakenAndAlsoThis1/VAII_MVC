@@ -14,10 +14,11 @@ class User extends Model
     public $mobile;
     public $adress;
     public $profilePicture;
+    public $role;
 
     static public function setDbColumns()
     {
-        return ['id','nickname','fullName','email','pssword','mobile','adress','profilePicture'];
+        return ['id','nickname','fullName','email','pssword','mobile','adress','profilePicture','role'];
     }
 
     static public function setTableName()

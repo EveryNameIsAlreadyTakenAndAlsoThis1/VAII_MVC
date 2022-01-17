@@ -35,20 +35,23 @@
                 <li class="nav-item">
                     <a class="nav-link " href="?c=home&a=about">About us</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"
-                       id="navbarDropdown" role="button">
-                        Other
-                    </a>
-                    <ul aria-labelledby="navbarDropdown" class="dropdown-menu">
-                        <li><a class="dropdown-item" href="?c=home&a=schedule">Schedule</a></li>
-                        <li><a class="dropdown-item" href="?c=home&a=tournaments">Tournaments</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="?c=auth&a=loginForm">Leaderbord</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link " href="?c=home&a=tournaments">Tournaments</a>
                 </li>
+<!--                <li class="nav-item dropdown">-->
+<!--                    <a aria-expanded="false" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#"-->
+<!--                       id="navbarDropdown" role="button">-->
+<!--                        Other-->
+<!--                    </a>-->
+<!--                    <ul aria-labelledby="navbarDropdown" class="dropdown-menu">-->
+<!--                        <li><a class="dropdown-item" href="?c=home&a=schedule">Schedule</a></li>-->
+<!--                        <li><a class="dropdown-item" href="?c=home&a=tournaments">Tournaments</a></li>-->
+<!--                        <li>-->
+<!--                            <hr class="dropdown-divider">-->
+<!--                        </li>-->
+<!--                        <li><a class="dropdown-item" href="?c=auth&a=loginForm">Leaderbord</a></li>-->
+<!--                    </ul>-->
+<!--                </li>-->
             </ul>
             <?php if (!\App\Auth::isLogged()) { ?>
             <ul class="navbar-nav">

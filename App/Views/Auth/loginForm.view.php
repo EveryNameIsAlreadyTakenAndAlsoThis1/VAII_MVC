@@ -9,6 +9,13 @@
                 <strong><?= $data["error"] ?></strong>
             </div>
             <?php }?>
+            <?php if($data['success'] != ""){ ?>
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <strong><?= $data["success"] ?></strong>
+                </div>
+            <?php }?>
+
             <form name="formLogin" method="post" action="?c=auth&a=login" onsubmit="return validateLogin(document.formLogin)">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Username</label>

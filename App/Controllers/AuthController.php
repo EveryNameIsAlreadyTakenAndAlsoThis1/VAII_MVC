@@ -21,7 +21,8 @@ class AuthController extends AControllerRedirect
     {
         return $this->html(
             [
-                'error' => $this->request()->getValue('error')
+                'error' => $this->request()->getValue('error'),
+                'success' => $this->request()->getValue('success')
             ]
 
         );
@@ -34,7 +35,8 @@ class AuthController extends AControllerRedirect
         }
         return $this->html(
             [
-                'error' => $this->request()->getValue('error')
+                'error' => $this->request()->getValue('error'),
+                'success' => $this->request()->getValue('success')
             ]
         );
     }
@@ -46,7 +48,8 @@ class AuthController extends AControllerRedirect
         }
         return $this->html(
             [
-                'error' => $this->request()->getValue('error')
+                'error' => $this->request()->getValue('error'),
+                'success' => $this->request()->getValue('success')
             ]
         );
     }
@@ -56,7 +59,12 @@ class AuthController extends AControllerRedirect
         if (!Auth::isLogged()) {
             $this->redirect('home');
         }
-        return $this->html();
+        return $this->html(
+            [
+                'error' => $this->request()->getValue('error'),
+                'success' => $this->request()->getValue('success')
+            ]
+        );
     }
 
     public function changeNicknameForm()
@@ -66,7 +74,8 @@ class AuthController extends AControllerRedirect
         }
         return $this->html(
             [
-                'error' => $this->request()->getValue('error')
+                'error' => $this->request()->getValue('error'),
+                'success' => $this->request()->getValue('success')
             ]
         );
     }
@@ -77,7 +86,8 @@ class AuthController extends AControllerRedirect
         }
         return $this->html(
             [
-                'error' => $this->request()->getValue('error')
+                'error' => $this->request()->getValue('error'),
+                'success' => $this->request()->getValue('success')
             ]
         );
     }
@@ -98,7 +108,7 @@ class AuthController extends AControllerRedirect
         }elseif ($logged==2){
             $this->redirect('auth', 'loginForm', ['error' => 'Bad password format']);
         }elseif($logged==3){
-            $this->redirect('home');
+            $this->redirect('auth',"profile",['success' => 'Successfully logged-in']);
         }elseif ($logged==4){
             $this->redirect('auth', 'loginForm', ['error' => 'Wrong username or password']);
         }
@@ -137,7 +147,7 @@ class AuthController extends AControllerRedirect
         }elseif ($result == 7){
             $this->redirect('auth', 'registerForm', ['error' => 'Wrong username format']);
         } else {
-            $this->redirect('auth', 'loginForm');
+            $this->redirect('auth', 'loginForm',['success'=>'Successfully registered']);
         }
 
 
@@ -167,10 +177,9 @@ class AuthController extends AControllerRedirect
         $fullName = $this->request()->getValue('fullName');
         $result=Auth::changeFullName($fullName);
         if($result==1){
-            //TODO chybova hlaska
-            $this->redirect('home');
+            $this->redirect('auth',"profile",['error' => 'Wrong name format']);
         }else{
-            $this->redirect('auth', 'profile');
+            $this->redirect('auth',"profile",['success' => 'Successfully changed name']);
         }
 
     }
@@ -184,13 +193,11 @@ class AuthController extends AControllerRedirect
         $email = $this->request()->getValue('email');
         $result = Auth::changeEmail($email);
         if ($result == 1) {
-        //TODO chybova hlaska
-            $this->redirect('home');
+            $this->redirect('auth',"profile",['error' => 'Email already taken']);
         }elseif($result==2){
-            //TODO chybova hlaska
-            $this->redirect('home');
+            $this->redirect('auth',"profile",['error' => 'Wrong format']);
         }else{
-            $this->redirect('auth', 'profile');
+            $this->redirect('auth',"profile",['success' => 'Successfully changed email']);
         }
 
     }
@@ -212,7 +219,7 @@ class AuthController extends AControllerRedirect
         }elseif($result==3){
             $this->redirect('auth', 'changeNicknameForm', ['error' => 'Wrong name format']);
         }else{
-            $this->redirect('auth', 'profile');
+            $this->redirect('auth',"profile",['success' => 'Successfully changed nickname']);
         }
 
     }
@@ -229,7 +236,7 @@ class AuthController extends AControllerRedirect
         $result = Auth::changePassword($oldPassword, $newPassword, $newPasswordRepeat);
 
         if ($result == 3) {
-            $this->redirect('auth', 'profile');
+            $this->redirect('auth',"profile",['success' => 'Successfully changed password']);
         } else {
             if ($result == 1) {
                 $this->redirect('auth', 'changePasswordForm', ['error' => 'Wrong new password']);
@@ -251,9 +258,9 @@ class AuthController extends AControllerRedirect
         $mobile = $this->request()->getValue('mobile');
         $result=Auth::changeMobile($mobile);
         if($result==1){
-            //TODO chybova hlaska
+            $this->redirect('auth',"profile",['error' => 'Wrong mobile format']);
         }
-        $this->redirect('auth', 'profile');
+        $this->redirect('auth',"profile",['success' => 'Successfully changed mobile']);
     }
 
     public function changeAdress()
@@ -265,8 +272,8 @@ class AuthController extends AControllerRedirect
         $adress = $this->request()->getValue('adress');
         $result=Auth::changeAdress($adress);
         if($result==1){
-            //TODO chybova hlaska
+            $this->redirect('auth',"profile",['error' => 'Wrong address format']);
         }
-        $this->redirect('auth', 'profile');
+        $this->redirect('auth',"profile",['success' => 'Successfully changed address']);
     }
 }
