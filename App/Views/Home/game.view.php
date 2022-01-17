@@ -40,11 +40,11 @@
             <?php
             $tournamentss = \App\Models\Tournament::getAll("game=?",[$game[0]->nameOfGame]);
             for ($x = 0; $x < sizeof($tournamentss); $x++){?>
-                <tr id=<?="trId".$tournamentss[$x]->id?> >
+                <tr id="<?="trId".$tournamentss[$x]->id?>" >
                     <td><?= $tournamentss[$x]->id?></td>
-                    <td><a href=<?= "?c=home&a=tournament&q=".$tournamentss[$x]->id?>><?= $tournamentss[$x]->name?></a></td>
+                    <td><a href="<?= "?c=home&a=tournament&q=".$tournamentss[$x]->id?>"><?= $tournamentss[$x]->name?></a></td>
                     <td><?= $tournamentss[$x]->game?></td>
-                    <td id=<?="numberOfPlayers".$tournamentss[$x]->id?>><?= sizeof($t=\App\Models\Tournament_user::getAll("tournamentId=?",[$tournamentss[$x]->id])) ?></td>
+                    <td id="<?="numberOfPlayers".$tournamentss[$x]->id?>"><?= sizeof($t=\App\Models\Tournament_user::getAll("tournamentId=?",[$tournamentss[$x]->id])) ?></td>
                     <?php if(\App\Auth::isLogged()){
                     ?><td><button value=<?= $tournamentss[$x]->id?> type="button" class="btn btn-outline-success join" >join</button>
                         <button value=<?= $tournamentss[$x]->id?> type="button" class="btn btn-outline-danger leave" >leave</button></td>

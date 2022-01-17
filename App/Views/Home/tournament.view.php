@@ -17,7 +17,7 @@
                 <h3><?= $tournament[0]->name ?></h3>
                 <p>
                    Game:
-                <a href=<?= "?c=home&a=game&q=".$tournament[0]->game?>><?= $tournament[0]->game?></a>
+                <a href="<?= "?c=home&a=game&q=".$tournament[0]->game?>"><?= $tournament[0]->game?></a>
                     <br>
 
                 </p>
@@ -46,13 +46,13 @@
             for ($x = 0; $x < sizeof($ts); $x++){
                 $user=\App\Models\User::getAll("id=?",[$ts[$x]->userId]);
                 ?>
-                <tr id=<?="trId".$user[0]->id?> >
+                <tr id="<?="trId".$user[0]->id?>" >
                     <td><?= $user[0]->id?></td>
                     <td><?= $user[0]->nickname?></td>
                     <td><?= $user[0]->email?></td>
                     <?php
                     if(\App\Auth::isAdmin()){
-                        ?><td><button value=<?=$user[0]->id."_".$_GET['q']?> type="button" class="btn btn-outline-danger remove" >remove</button></td><?php
+                        ?><td><button value="<?=$user[0]->id."_".$_GET['q']?>" type="button" class="btn btn-outline-danger remove" >remove</button></td><?php
                     }?>
                 </tr>
             <?php }?>
@@ -75,7 +75,7 @@
             <?php
             for ($x = 0; $x < sizeof($sponsors); $x++){
                 ?>
-                <tr id=<?="trId".$sponsors[$x]->id?> >
+                <tr id="<?="trId".$sponsors[$x]->id?>" >
                     <td><?= $sponsors[$x]->id?></td>
                     <td><?= $sponsors[$x]->name?></td>
                     <td><?= $sponsors[$x]->sponsoring." EUR"?></td>
@@ -92,7 +92,7 @@
             <div id="addTable">
                 <input id="nameT" type="text" placeholder="Name of sponsor">
                 <input id="poolT" type="text" placeholder="Sponsoring pool">
-                <button value=<?=$_GET['q']?> type="button" class="btn btn-outline-success insertSponsor" >Insert</button></td>
+                <button value="<?=$_GET['q']?>" type="button" class="btn btn-outline-success insertSponsor" >Insert</button>
             </div>
         <?php }?>
         <div class="row">

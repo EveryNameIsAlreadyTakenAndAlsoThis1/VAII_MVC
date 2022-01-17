@@ -70,8 +70,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="?c=auth&a=logout">Logout</a>
                 </li>
-            <?php } ?>
             </ul>
+            <?php } ?>
+
         </div>
     </div>
 </nav>

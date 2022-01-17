@@ -15,7 +15,7 @@
                 </form>
                 <h2><?= $games[$x]->nameOfGame ?></h2>
                 <p><?= $games[$x]->textOfGame ?> </p>
-                <p><a class="btn btn-secondary" href=<?="?c=home&a=game&q=".$games[$x]->nameOfGame ?>>View details »</a></p>
+                <p><a class="btn btn-secondary" href="<?="?c=home&a=game&q=".$games[$x]->nameOfGame ?>">View details »</a></p>
             </div>
             <?php }?>
         </div>

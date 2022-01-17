@@ -24,7 +24,7 @@
                         <h5 class="my-3"><?= unserialize($_SESSION['user'])->nickname ?> </h5>
 
                         <div class="d-flex justify-content-center mb-2">
-                            <a href="?c=auth&a=changeNicknameForm" type="button" class="btn btn-primary">Change
+                            <a href="?c=auth&a=changeNicknameForm" class="btn btn-primary">Change
                                 nickname</a>
 <!--                            <a type="?c=auth&a=changeProfilePicture" class="btn btn-outline-primary ms-1">Change Profile-->
 <!--                                Picture</a>-->
@@ -45,8 +45,8 @@
                                     <div class="input-group mb-3">
                                         <input name="fullName" type="text" class="form-control"
                                                value="<?= unserialize($_SESSION['user'])->fullName ?>"
-                                               aria-label="Recipient's username" aria-describedby="button-addon2">
-                                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+                                               aria-label="Recipient's username" >
+                                        <button class="btn btn-outline-secondary" type="submit">
                                             Change
                                         </button>
                                     </div>
@@ -64,8 +64,8 @@
                                     <div class="input-group mb-3">
                                         <input name="email" type="text" class="form-control"
                                                value="<?= unserialize($_SESSION['user'])->email ?>"
-                                               aria-label="Recipient's username" aria-describedby="button-addon2">
-                                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+                                               aria-label="Recipient's username" >
+                                        <button class="btn btn-outline-secondary" type="submit">
                                             Change
                                         </button>
                                     </div>
@@ -79,8 +79,8 @@
                             </div>
 
                             <div class="col-sm-3">
-                                <a href="?c=auth&a=changePasswordForm" class="btn btn-outline-secondary" type="submit"
-                                   id="button-addon2">Change
+                                <a href="?c=auth&a=changePasswordForm" class="btn btn-outline-secondary"
+                                  >Change
                                 </a>
                             </div>
 
@@ -95,8 +95,8 @@
                                     <div class="input-group mb-3">
                                         <input name="mobile" type="text" class="form-control"
                                                value="<?= unserialize($_SESSION['user'])->mobile ?>"
-                                               aria-label="Recipient's username" aria-describedby="button-addon2">
-                                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+                                               aria-label="Recipient's username" >
+                                        <button class="btn btn-outline-secondary" type="submit" >
                                             Change
                                         </button>
                                     </div>
@@ -113,8 +113,8 @@
                                     <div class="input-group mb-3">
                                         <input name="adress" type="text" class="form-control"
                                                value="<?= unserialize($_SESSION['user'])->adress ?>"
-                                               aria-label="Recipient's username" aria-describedby="button-addon2">
-                                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
+                                               aria-label="Recipient's username">
+                                        <button class="btn btn-outline-secondary" type="submit">
                                             Change
                                         </button>
                                     </div>
@@ -126,7 +126,7 @@
                             <div class="col-sm-6">
                                 <div class="input-group mb-3">
                                     <a href="?c=auth&a=deleteAccountForm" class="btn btn-outline-secondary"
-                                       type="submit" id="button-addon2">
+                                       >
                                         Delete Account
                                     </a>
                                 </div>
@@ -156,13 +156,13 @@
                 for ($x = 0; $x < sizeof($tournamentss); $x++){
                     $tournament=\App\Models\Tournament::getOne($tournamentss[$x]->tournamentId);
                     ?>
-                    <tr id=<?="trId".$tournament->id?> >
+                    <tr id="<?="trId".$tournament->id?>" >
                         <td><?= $tournament->id?></td>
-                        <td><a href=<?= "?c=home&a=tournament&q=".$tournament->id?>><?= $tournament->name?></a></td>
+                        <td><a href="<?= "?c=home&a=tournament&q=".$tournament->id?>"><?= $tournament->name?></a></td>
                         <td><?= $tournament->game?></td>
                         <td id=<?="numberOfPlayers".$tournament->id?>><?= sizeof($t=\App\Models\Tournament_user::getAll("tournamentId=?",[$tournament->id])) ?></td>
                         <?php if(\App\Auth::isLogged()){
-                            ?><td><button value=<?= $tournament->id?> type="button" class="btn btn-outline-danger leaveProfile" >leave</button></td>
+                            ?><td><button value="<?= $tournament->id?>" type="button" class="btn btn-outline-danger leaveProfile" >leave</button></td>
                         <?php } ?>
                     </tr>
                 <?php }?>

@@ -13,7 +13,7 @@
             <form name="formRegister" method="post" onsubmit="return validateForm()" action="?c=auth&a=register">
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Username</label>
-                    <input type="login" class="form-control" name="login" id="exampleFormControlInput1" required>
+                    <input type="text" class="form-control" name="login" id="exampleFormControlInput1" required>
                 </div>
                 <div class="mb-3">
                     <label for="exampleFormControlInput1" class="form-label">Email</label>
@@ -29,7 +29,7 @@
                     <input type="password" class="form-control" name="passwordRepeat" id="exampleFormControlInput4" required>
                 </div>
                 <div class="mb-3">
-                    <button name="submitButton" type="submit" class="btn btn-primary login"">Register</button>
+                    <button name="submitButton" type="submit" class="btn btn-primary login">Register</button>
                 </div>
             </form>
         </div>
